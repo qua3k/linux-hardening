@@ -517,7 +517,7 @@ static int do_mprotect_pkey(unsigned long start, size_t len,
 	int error = -EINVAL;
 	const int grows = prot & (PROT_GROWSDOWN|PROT_GROWSUP);
 	const bool rier = (current->personality & READ_IMPLIES_EXEC) &&
-				(prot & PROT_READ);
+				(prot & (PROT_READ | PROT_WRITE));
 
 	start = untagged_addr(start);
 
